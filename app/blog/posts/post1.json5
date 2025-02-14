@@ -1,0 +1,19 @@
+{      
+    title: "8 Brain Health Tips for a Healthier You",
+    date: "2024-10-10",
+    author: "Spark4",
+    category: "AI",
+    tags: [
+        "concepts",
+        "cannon",
+    ],
+    featured_image: "blog/images/featured1.png",
+    featured_image_alt: "What is the bitter lesson",
+    inside_image: "blog/images/inside1.png",
+    inside_image_alt: "What is the bitter lesson",
+    featured_image_caption: "Models just want to learn",
+    inside_image_caption: "Understanding the bitter lesson",
+    excerpt: "",
+    published: true,
+    content_file: "post1_content.md",
+}

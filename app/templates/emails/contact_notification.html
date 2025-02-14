@@ -1,0 +1,27 @@
+<!-- app/templates/emails/contact_notification.html -->
+ 
+<!DOCTYPE html>
+<html>
+<head>
+    <style>
+        body { font-family: Arial, sans-serif; line-height: 1.6; }
+        .container { max-width: 600px; margin: 0 auto; padding: 20px; }
+        .details { background-color: #f5f5f5; padding: 15px; border-radius: 5px; }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>New Early Access Request</h1>
+        
+        <div class="details">
+            <p><strong>Name:</strong> {{ contact.name }}</p>
+            <p><strong>Email:</strong> {{ contact.email }}</p>
+            <p><strong>Date:</strong> {{ contact.created_at.strftime('%Y-%m-%d %H:%M:%S UTC') }}</p>
+            <p><strong>Message:</strong></p>
+            <p>{{ contact.message }}</p>
+        </div>
+        
+        <p>View this submission in your admin dashboard to follow up.</p>
+    </div>
+</body>
+</html>

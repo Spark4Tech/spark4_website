@@ -1,0 +1,124 @@
+<!-- templates/blog/post.html -->
+{% extends "base.html" %}
+
+{% block content %}
+<article class="py-8 md:py-16 lg:py-24" itemscope itemtype="http://schema.org/BlogPosting">
+    <div class="container mx-auto px-4 sm:px-6 lg:px-8 max-w-4xl">
+        <!-- Title Section -->
+        <header class="mb-8 md:mb-12">
+            <h1 class="text-3xl md:text-4xl lg:text-5xl font-bold mb-4 md:mb-6" itemprop="headline">
+                {{ post.title }}
+            </h1>
+            
+            <!-- Meta Information -->
+            <div class="flex flex-wrap items-center text-gray-600 text-lg mb-6">
+                <time datetime="{{ post.updated_at.strftime('%Y-%m-%d') }}" itemprop="datePublished" class="mr-4">
+                    {{ post.updated_at.strftime('%B %d, %Y') }}
+                </time>
+                {% if post.category %}
+                <span class="mr-4">|</span>
+                <a href="{{ url_for('blog.category', slug=post.category.slug) }}" 
+                   class="text-blue-600 hover:underline mr-4" 
+                   itemprop="articleSection">
+                    {{ post.category.name }}
+                </a>
+                {% endif %}
+                {% if post.author %}
+                <span class="mr-4">|</span>
+                <span itemprop="author" itemscope itemtype="http://schema.org/Person">
+                    <span itemprop="name">{{ post.author.name }}</span>
+                </span>
+                {% endif %}
+            </div>
+            
+            <!-- Excerpt/Summary -->
+            {% if post.excerpt %}
+            <div class="bg-gray-50 p-6 rounded-lg border-l-4 border-blue-500 mb-8" itemprop="description">
+                <p class="text-lg text-gray-700 leading-relaxed">
+                    {{ post.excerpt }}
+                </p>
+            </div>
+            {% endif %}
+        </header>
+
+        <!-- Main Content -->
+        <div class="prose prose-lg md:prose-xl lg:prose-2xl max-w-none" itemprop="articleBody">
+            {% if post.inside_image %}
+            <figure class="my-8">
+                <img src="{{ url_for('static', filename=post.inside_image) }}" 
+                     alt="{{ post.inside_image_alt }}" 
+                     class="w-full rounded-lg shadow-md">
+                {% if post.inside_image_caption %}
+                <figcaption class="text-sm text-gray-600 text-center mt-3">
+                    {{ post.inside_image_caption }}
+                </figcaption>
+                {% endif %}
+            </figure>
+            {% endif %}
+
+            {{ post.content|safe }}
+        </div>
+
+        <!-- Article Footer -->
+        <footer class="mt-12 pt-8 border-t border-gray-200">
+            <!-- Tags -->
+            {% if post.tags %}
+            <div class="mb-8">
+                <h2 class="text-xl font-semibold mb-4">Related Topics</h2>
+                <div class="flex flex-wrap gap-2">
+                    {% for tag in post.tags %}
+                    <a href="{{ url_for('blog.tag', slug=tag.name|lower) }}" 
+                       class="bg-gray-100 hover:bg-gray-200 text-gray-700 px-3 py-1 rounded-full text-sm">
+                        {{ tag.name }}
+                    </a>
+                    {% endfor %}
+                </div>
+            </div>
+            {% endif %}
+
+            <!-- About Section -->
+            <div class="bg-blue-50 p-6 rounded-lg">
+                <h2 class="text-xl font-semibold mb-4">About Spark4</h2>
+                <p class="text-gray-700 mb-4">
+                    Spark4 is a digital transformation and AI application consultancy.
+                </p>
+                <div class="flex items-center justify-between flex-wrap">
+                    <a href="{{ url_for('main.index') }}#contact" 
+                       class="bg-blue-600 text-white px-6 py-2 rounded-full hover:bg-blue-700 transition duration-300">
+                        Connect with us
+                    </a>
+                    <div class="flex space-x-4 mt-4 sm:mt-0">
+                        <a href="#" class="text-blue-600 hover:text-blue-800">Share on Bluesky</a>
+                        <a href="#" class="text-blue-600 hover:text-blue-800">Share on Linkedin</a>
+                    </div>
+                </div>
+            </div>
+        </footer>
+    </div>
+</article>
+
+<!-- Schema.org metadata -->
+<script type="application/ld+json">
+{
+    "@context": "http://schema.org",
+    "@type": "BlogPosting",
+    "headline": "{{ post.title }}",
+    "image": "{{ url_for('static', filename=post.featured_image, _external=True) if post.featured_image else '' }}",
+    "datePublished": "{{ post.created_at.strftime('%Y-%m-%d') }}",
+    "dateModified": "{{ post.updated_at.strftime('%Y-%m-%d') }}",
+    "author": {
+        "@type": "Person",
+        "name": "{{ post.author.name if post.author else 'Spark4 Team' }}"
+    },
+    "publisher": {
+        "@type": "Organization",
+        "name": "Spark4",
+        "logo": {
+            "@type": "ImageObject",
+            "url": "{{ url_for('static', filename='logo.png', _external=True) }}"
+        }
+    },
+    "description": "{{ post.excerpt }}"
+}
+</script>
+{% endblock %}
