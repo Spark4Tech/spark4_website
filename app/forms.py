@@ -22,7 +22,7 @@ class ContactForm(FlaskForm):
         Length(min=0, max=1000, message="Message must be less than 1000 characters")
     ])
     
-    submit = SubmitField('Get on the List!')
+    submit = SubmitField('Connect with us')
     
     def validate_name(self, field):
         # Check for any numbers or special characters except hyphen and apostrophe
