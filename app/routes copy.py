@@ -51,27 +51,22 @@ def contact():
                 send_contact_confirmation_email(contact.email, contact.name)
                 send_contact_notification_email(contact)
                 
-                # For HTMX requests, return both updates
-                if "HX-Request" in request.headers:
-                    return f"""
-                        <div id="contact-heading">
-                            <h2 class="text-4xl font-bold mb-12 text-center text-white">Ready to Ignite Your Digital Future?</h2>
-                            <p class="text-4xl font-bold mb-12 text-center text-white">Let's Go!</p>
-                        </div>
-                        <div id="contact-form" class="max-w-xl mx-auto text-center">
-                            <p class="text-xl text-gray-300">Thanks for reaching out! We'll be in touch soon.</p>
-                        </div>
-                    """, 200, {
-                        "HX-Trigger": "showSuccessToast"
-                    }
-                
-                # For regular requests, use flash and redirect
                 flash('Thank you for your interest! We\'ll be in touch soon.', 'success')
                 return redirect(url_for('main.index'))
                 
             except Exception as e:
                 logger.error(f"Error processing contact form: {str(e)}", exc_info=True)
                 db.session.rollback()
+                flash('Something went wrong. Please try again later.', 'error')
+        
+        # If form validation failed, flash the first error
+        else:
+            for field, errors in form.errors.items():
+                flash(f"{errors[0]}", 'error')
+                break
+    
+    # For GET requests or failed validation, return to the form
+    return redirect(url_for('main.index', _anchor='contact'))
 
 @main.route('/signup', methods=['POST'])
 def signup():

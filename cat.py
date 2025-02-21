@@ -3,26 +3,34 @@ from gitignore_parser import parse_gitignore
 
 # Define the files to be concatenated
 files_to_concatenate = [
-    'app/__init__.py',
+    'run.py',
     'config.py',
+    
+    'app/__init__.py',
     'app/models.py',
     'app/routes.py',
+
+    'app/static/js/main.js',
+    'app/static/css/main.css',
+
     'app/templates/index.html',
     'app/templates/base.html',
-    'app/email/email_service.py',
-    'app/blog/__init__.py',
-    'app/blog/templates/blog_index.html',
-    'app/blog/templates/post.html',
-    'app/blog/templates/new_post.html',
-    'app/blog/templates/category.html',
-    'app/blog/forms.py',
-    'app/blog/routes.py',
-    'app/blog/posts/post1_content.md',
-    'app/blog/posts/post1.json5',
-    'app/blog/posts/footer.md',
-    'run.py',
+    
+#    'app/email/email_service.py',
+    
+#    'app/blog/__init__.py',
+#    'app/blog/templates/blog_index.html',
+#    'app/blog/templates/post.html',
+#    'app/blog/templates/new_post.html',
+#    'app/blog/templates/category.html',
+#    'app/blog/forms.py',
+#    'app/blog/routes.py',
+#    'app/blog/posts/post1_content.md',
+#    'app/blog/posts/post1.json5',
+#    'app/blog/posts/footer.md',
+    
     'package.json',
-    'import_posts.py'
+#    'import_posts.py'
 ]
 
 # Define the output file

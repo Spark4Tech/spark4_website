@@ -3,6 +3,7 @@
 <head>
     <!-- Google tag (gtag.js) -->
     <script async src="https://www.googletagmanager.com/gtag/js?id=G-LNY0GLDNYM"></script>
+    <script src="https://unpkg.com/htmx.org@1.9.6"></script>
     <script>
     window.dataLayer = window.dataLayer || [];
     function gtag(){dataLayer.push(arguments);}
@@ -181,30 +182,6 @@
             );
         });
 
-        // Flash Messages
-        function showToast(message, category) {
-            const flashContainer = document.getElementById('flash-messages');
-            if (!flashContainer) return;
-
-            const toast = document.createElement('div');
-            const bgColor = {
-                'success': 'bg-green-500',
-                'error': 'bg-red-500',
-                'warning': 'bg-yellow-500',
-                'default': 'bg-blue-500'
-            }[category] || 'bg-blue-500';
-            
-            toast.className = `${bgColor} text-white px-4 py-2 rounded shadow-lg`;
-            toast.textContent = message;
-
-            flashContainer.appendChild(toast);
-            setTimeout(() => {
-                if (toast.parentNode === flashContainer) {
-                    flashContainer.removeChild(toast);
-                }
-            }, 5000);
-        }
-
         // Initialize flash messages
         document.addEventListener('DOMContentLoaded', function() {
             const flashMessagesData = {{ get_flashed_messages(with_categories=true) | tojson | safe }};
@@ -216,5 +193,16 @@
         });
     </script>
     {% endblock %}
+    <script src="{{ url_for('static', filename='js/main.js') }}"></script>
+    <!-- Spinner Overlay -->
+    <div id="spinnerOverlay" class="fixed inset-0 backdrop-blur-sm bg-black/30 z-50 hidden flex items-center justify-center">
+        <div class="flex flex-col items-center">
+            <!-- Spinner Ring -->
+            <div class="relative">
+                <div class="w-12 h-12 rounded-full border-4 border-blue-200 border-t-blue-500 animate-spin"></div>
+            </div>
+            <p class="mt-4 text-white text-lg">Processing...</p>
+        </div>
+    </div>
 </body>
 </html>

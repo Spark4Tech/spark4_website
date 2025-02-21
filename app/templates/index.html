@@ -9,7 +9,8 @@
         loop 
         muted 
         playsinline
-        class="absolute inset-0 w-full h-full object-cover brightness-50"
+        preload="auto"
+        class="absolute inset-0 w-full h-full object-cover"
     >
         <source src="{{ url_for('static', filename='videos/hero_video.mp4') }}" type="video/mp4">
         <!-- Fallback if video doesn't load -->
@@ -20,12 +21,11 @@
         >
     </video>
     
-    <!-- Single, stronger overlay -->
-    <div class="absolute inset-0 bg-black/90 mix-blend-multiply"></div>
+    
     
     <!-- Content -->
     <div class="relative z-10 text-center text-white max-w-4xl px-4">
-        <h1 class="text-5xl lg:text-7xl font-bold mb-4 text-transparent bg-clip-text bg-gradient-to-r from-blue-400 to-purple-400">Igniting Digital Transformation</h1>
+        <h1 class="text-5xl lg:text-7xl font-bold mb-12 text-transparent bg-clip-text bg-gradient-to-r from-blue-400 to-purple-400">Igniting Digital Transformation</h1>
         <p class="text-2xl mb-8 text-gray-300">Empowering your business with AI and technology-fueled solutions</p>
         <a href="#contact" class="bg-gradient-to-r from-blue-500 to-purple-500 text-white px-8 py-4 rounded-full font-semibold shadow-lg hover:from-blue-600 hover:to-purple-600 transition duration-200">Start Your Digital Journey</a>
     </div>
@@ -158,10 +158,20 @@
 <!-- Contact Section -->
 <section id="contact" class="py-20 bg-black">
     <div class="container mx-auto px-4">
-        <h2 class="text-4xl font-bold mb-12 text-center text-white">Ready to Ignite Your Digital Future?</h2>
-        <div class="max-w-xl mx-auto">
-            <form action="{{ url_for('main.contact') }}" method="POST" class="space-y-6">
-                {{ form.csrf_token }}
+        <!-- Wrap both the heading and form in a target div -->
+        <div id="contact-content">
+            <div id="contact-heading">
+                <h2 class="text-4xl font-bold mb-12 text-center text-white">Ready to Ignite Your Digital Future?</h2>
+            </div>
+            <div id="contact-form" class="max-w-xl mx-auto">
+                <form 
+                    hx-post="{{ url_for('main.contact') }}" 
+                    hx-trigger="submit"
+                    hx-indicator="#spinnerOverlay"
+                    hx-target="#contact-content"
+                    class="space-y-6"
+                >
+                    {{ form.csrf_token }}
                 
                 <div>
                     <label for="name" class="block text-lg mb-2 text-gray-300">Name</label>
@@ -183,4 +193,27 @@
         </div>
     </div>
 </section>
+<script>
+    // Listen for the custom event from HX-Trigger
+    document.body.addEventListener('showSuccessToast', function() {
+        hideSpinner();
+        showToast('Thank you! We will be in touch soon.', true);
+    });
+    
+    // Handle form submission errors
+    document.querySelector('form').addEventListener('htmx:responseError', function() {
+        hideSpinner();
+        showToast('Please check your inputs and try again.', false);
+    });
+
+    // Show spinner when request starts
+    document.body.addEventListener('htmx:beforeRequest', function() {
+        showSpinner();
+    });
+
+    // Hide spinner when request ends
+    document.body.addEventListener('htmx:afterRequest', function() {
+        hideSpinner();
+    });
+</script>
 {% endblock %}
