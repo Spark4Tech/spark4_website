@@ -165,35 +165,56 @@
             </div>
             <div id="contact-form" class="max-w-xl mx-auto">
                 <form 
-                    hx-post="{{ url_for('main.contact') }}" 
+                    hx-post="{{ url_for('main.contact') }}"
                     hx-trigger="submit"
-                    hx-indicator="#spinnerOverlay"
                     hx-target="#contact-content"
+                    hx-indicator="#spinnerOverlay"
+                    hx-swap="outerHTML"
+                    hx-headers='{"X-CSRFToken": "{{ form.csrf_token._value() }}"}'
                     class="space-y-6"
+                    x-data
+                    @submit.prevent
                 >
                     {{ form.csrf_token }}
-                
-                <div>
-                    <label for="name" class="block text-lg mb-2 text-gray-300">Name</label>
-                    {{ form.name(class="w-full bg-gray-800 border border-gray-700 rounded-lg px-4 py-2 text-white focus:border-blue-500 focus:outline-none", placeholder="Your name") }}
-                </div>
-                
-                <div>
-                    <label for="email" class="block text-lg mb-2 text-gray-300">Email</label>
-                    {{ form.email(class="w-full bg-gray-800 border border-gray-700 rounded-lg px-4 py-2 text-white focus:border-blue-500 focus:outline-none", placeholder="your@email.com") }}
-                </div>
-                
-                <div>
-                    <label for="message" class="block text-lg mb-2 text-gray-300">How can we help transform your business?</label>
-                    {{ form.message(class="w-full bg-gray-800 border border-gray-700 rounded-lg px-4 py-2 text-white focus:border-blue-500 focus:outline-none", rows="5", placeholder="Tell us about your business needs...") }}
-                </div>
-                
-                {{ form.submit(class="w-full bg-gradient-to-r from-blue-500 to-purple-500 text-white px-6 py-3 rounded-lg font-semibold hover:from-blue-600 hover:to-purple-600 transition duration-300") }}
-            </form>
+                    
+                    <div>
+                        <label for="name" class="block text-lg mb-2 text-gray-300">Name</label>
+                        {{ form.name(class="w-full bg-gray-800 border border-gray-700 rounded-lg px-4 py-2 text-white focus:border-blue-500 focus:outline-none", placeholder="Your name") }}
+                    </div>
+                    
+                    <div>
+                        <label for="email" class="block text-lg mb-2 text-gray-300">Email</label>
+                        {{ form.email(class="w-full bg-gray-800 border border-gray-700 rounded-lg px-4 py-2 text-white focus:border-blue-500 focus:outline-none", placeholder="your@email.com") }}
+                    </div>
+                    
+                    <div>
+                        <label for="message" class="block text-lg mb-2 text-gray-300">How can we help transform your business?</label>
+                        {{ form.message(class="w-full bg-gray-800 border border-gray-700 rounded-lg px-4 py-2 text-white focus:border-blue-500 focus:outline-none", rows="5", placeholder="Tell us about your business needs...") }}
+                    </div>
+                    
+                    {{ form.submit(class="w-full bg-gradient-to-r from-blue-500 to-purple-500 text-white px-6 py-3 rounded-lg font-semibold hover:from-blue-600 hover:to-purple-600 transition duration-300") }}
+                </form>
         </div>
     </div>
 </section>
 <script>
+    // Debug HTMX events
+    document.body.addEventListener('htmx:beforeRequest', function(evt) {
+        console.log('HTMX request starting:', evt);
+        showSpinner();
+    });
+    
+    document.body.addEventListener('htmx:afterRequest', function(evt) {
+        console.log('HTMX request complete:', evt);
+        hideSpinner();
+    });
+    
+    document.body.addEventListener('htmx:error', function(evt) {
+        console.error('HTMX error:', evt);
+        hideSpinner();
+        showToast('An error occurred. Please try again.', false);
+    });
+
     // Listen for the custom event from HX-Trigger
     document.body.addEventListener('showSuccessToast', function() {
         hideSpinner();
@@ -201,19 +222,9 @@
     });
     
     // Handle form submission errors
-    document.querySelector('form').addEventListener('htmx:responseError', function() {
+    document.body.addEventListener('htmx:responseError', function() {
         hideSpinner();
         showToast('Please check your inputs and try again.', false);
-    });
-
-    // Show spinner when request starts
-    document.body.addEventListener('htmx:beforeRequest', function() {
-        showSpinner();
-    });
-
-    // Hide spinner when request ends
-    document.body.addEventListener('htmx:afterRequest', function() {
-        hideSpinner();
     });
 </script>
 {% endblock %}

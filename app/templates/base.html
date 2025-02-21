@@ -3,12 +3,11 @@
 <head>
     <!-- Google tag (gtag.js) -->
     <script async src="https://www.googletagmanager.com/gtag/js?id=G-LNY0GLDNYM"></script>
-    <script src="https://unpkg.com/htmx.org@1.9.6"></script>
     <script>
-    window.dataLayer = window.dataLayer || [];
-    function gtag(){dataLayer.push(arguments);}
-    gtag('js', new Date());
-    gtag('config', 'G-LNY0GLDNYM');
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        gtag('js', new Date());
+        gtag('config', 'G-LNY0GLDNYM');
     </script>
     
     {% block meta %}
@@ -204,5 +203,7 @@
             <p class="mt-4 text-white text-lg">Processing...</p>
         </div>
     </div>
+    <script src="https://unpkg.com/htmx.org@1.9.6" defer></script>
+    <script src="{{ url_for('static', filename='js/main.js') }}" defer></script>
 </body>
 </html>
