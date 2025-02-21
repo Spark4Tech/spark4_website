@@ -13,42 +13,6 @@ migrate = Migrate()
 def create_app():
     app = Flask(__name__)
     app.config.from_object(Config)
-
-    @app.after_request
-    def add_security_headers(response):
-        csp = {
-            'default-src': ["'self'", "https:", "http:"],
-            'script-src': [
-                "'self'", 
-                "'unsafe-inline'", 
-                "'unsafe-eval'",
-                "https://www.googletagmanager.com",
-                "https://www.google-analytics.com",
-                "https://unpkg.com",
-                "https://*.googleapis.com"
-            ],
-            'style-src': [
-                "'self'", 
-                "'unsafe-inline'",
-                "https://fonts.googleapis.com",
-                "https://unpkg.com"
-            ],
-            'font-src': [
-                "'self'",
-                "https://fonts.gstatic.com",
-                "https://fonts.googleapis.com"
-            ],
-            'img-src': ["'self'", "data:", "https:", "http:"],
-            'connect-src': ["'self'", "https:", "http:"],
-            'frame-src': ["'self'", "https:", "http:"],
-            'media-src': ["'self'", "https:", "http:"]
-        }
-        
-        response.headers['Content-Security-Policy'] = '; '.join([
-            f"{key} {' '.join(values)}"
-            for key, values in csp.items()
-        ])
-        return response
     
     # Initialize extensions with app
     db.init_app(app)
