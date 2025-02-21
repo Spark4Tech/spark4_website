@@ -17,29 +17,31 @@ def create_app():
     @app.after_request
     def add_security_headers(response):
         csp = {
-            'default-src': ["'self'"],
+            'default-src': ["'self'", "https:", "http:"],
             'script-src': [
-                "'self'",
-                "'unsafe-inline'",
+                "'self'", 
+                "'unsafe-inline'", 
                 "'unsafe-eval'",
                 "https://www.googletagmanager.com",
+                "https://www.google-analytics.com",
                 "https://unpkg.com",
                 "https://*.googleapis.com"
             ],
             'style-src': [
-                "'self'",
+                "'self'", 
                 "'unsafe-inline'",
                 "https://fonts.googleapis.com",
                 "https://unpkg.com"
             ],
             'font-src': [
                 "'self'",
-                "https://fonts.gstatic.com"
+                "https://fonts.gstatic.com",
+                "https://fonts.googleapis.com"
             ],
-            'img-src': ["'self'", "data:", "https:"],
-            'connect-src': ["'self'", "https:"],
-            'frame-src': ["'self'"],
-            'media-src': ["'self'"]
+            'img-src': ["'self'", "data:", "https:", "http:"],
+            'connect-src': ["'self'", "https:", "http:"],
+            'frame-src': ["'self'", "https:", "http:"],
+            'media-src': ["'self'", "https:", "http:"]
         }
         
         response.headers['Content-Security-Policy'] = '; '.join([
