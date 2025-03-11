@@ -91,3 +91,11 @@ def privacy_policy():
 @main.route('/terms-of-service')
 def terms_of_service():
     return render_template('terms_of_service.html')
+
+@main.route('/stash-it')
+def stash_it():
+    return render_template('stash_it.html')
+
+@main.route('/stash-it-privacy-policy/')
+def stash_it_privacy_policy():
+    return render_template('stash_it_privacy_policy.html')

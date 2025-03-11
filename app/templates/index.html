@@ -21,12 +21,12 @@
         >
     </video>
     
-    
-    
     <!-- Content -->
-    <div class="relative z-10 text-center text-white max-w-4xl px-4">
-        <h1 class="text-5xl lg:text-7xl font-bold mb-12 text-transparent bg-clip-text bg-gradient-to-r from-blue-400 to-purple-400">Igniting Digital Transformation</h1>
-        <p class="text-2xl mb-8 text-gray-300">Empowering your business with AI and technology-fueled solutions</p>
+    <div class="relative z-10 text-center text-white max-w-4xl px-4 sm:px-8 md:px-12">
+        <h1 class="text-5xl sm:text-5xl lg:text-7xl xl:text-7xl font-bold mb-8 sm:mb-12 text-transparent bg-clip-text bg-gradient-to-r from-blue-400 to-purple-400 leading-tight">
+            Igniting Digital Transformation
+        </h1>
+        <p class="text-2xl mb-12 text-gray-300">Empowering your business with AI and technology-fueled solutions</p>
         <a href="#contact" class="bg-gradient-to-r from-blue-500 to-purple-500 text-white px-8 py-4 rounded-full font-semibold shadow-lg hover:from-blue-600 hover:to-purple-600 transition duration-200">Start Your Digital Journey</a>
     </div>
 </section>
@@ -150,6 +150,65 @@
             <div class="bg-gray-800 p-8 rounded-xl border border-gray-700 hover:border-blue-500 transition-all duration-300">
                 <h3 class="text-xl font-semibold mb-4 text-blue-400">Rapid Innovation</h3>
                 <p class="text-gray-300">Integration of digital solutions with a keen eye on ethical implications and sustainability.</p>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Apps Section -->
+<section id="apps" class="py-20 bg-black">
+    <div class="container mx-auto px-4">
+        <h2 class="text-4xl font-bold mb-16 text-center text-white">Our Apps</h2>
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+            <!-- Stash It App -->
+            <div class="bg-gray-800 p-8 rounded-xl border border-gray-700 hover:border-blue-500 transition-all duration-300">
+                <div class="flex items-center mb-4">
+                    <h3 class="text-2xl font-semibold text-blue-400 mr-4">Stash It</h3>
+                    <span class="bg-blue-500 text-white text-xs px-2 py-1 rounded">New</span>
+                </div>
+                <p class="text-gray-300 mb-4">
+                    A Chrome extension that helps you manage your digital workflow by creating calendar reminders for web pages and documents.
+                </p>
+                <div class="flex space-x-4">
+                    <a href="{{ url_for('main.stash_it') }}" class="bg-gradient-to-r from-blue-500 to-purple-500 text-white px-4 py-2 rounded-lg hover:from-blue-600 hover:to-purple-600 transition duration-200">
+                        Learn More
+                    </a>
+                    <a href="https://chrome.google.com/webstore/detail/stash-it" target="_blank" class="border border-blue-400 text-blue-400 px-4 py-2 rounded-lg hover:bg-blue-500 hover:text-white transition duration-200">
+                        Install
+                    </a>
+                </div>
+            </div>
+
+            <!-- Sparkal App -->
+            <div class="bg-gray-800 p-8 rounded-xl border border-gray-700 hover:border-blue-500 transition-all duration-300">
+                <div class="flex items-center mb-4">
+                    <h3 class="text-2xl font-semibold text-blue-400 mr-4">Sparkal</h3>
+                    <span class="bg-green-500 text-white text-xs px-2 py-1 rounded">Beta</span>
+                </div>
+                <p class="text-gray-300 mb-4">
+                    A micro-learning platform designed for content creators to transform long-form content into bite-sized, actionable insights.
+                </p>
+                <div class="flex space-x-4">
+                    <a href="#" class="bg-gradient-to-r from-blue-500 to-purple-500 text-white px-4 py-2 rounded-lg hover:from-blue-600 hover:to-purple-600 transition duration-200">
+                        Learn More
+                    </a>
+                    <a href="#" class="border border-blue-400 text-blue-400 px-4 py-2 rounded-lg hover:bg-blue-500 hover:text-white transition duration-200">
+                        Join Waitlist
+                    </a>
+                </div>
+            </div>
+
+            <!-- Second Placeholder for Future Apps -->
+            <div class="bg-gray-800 p-8 rounded-xl border border-gray-700 opacity-50 cursor-not-allowed">
+                <h3 class="text-2xl font-semibold text-gray-400 mb-4">Coming Soon</h3>
+                <p class="text-gray-500 mb-4">
+                    More innovative digital solutions are on the horizon.
+                </p>
+                <div class="flex space-x-4 opacity-50">
+                    <button class="bg-gray-600 text-gray-300 px-4 py-2 rounded-lg" disabled>
+                        Stay Tuned
+                    </button>
+                </div>
             </div>
         </div>
     </div>
