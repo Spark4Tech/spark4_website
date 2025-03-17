@@ -114,3 +114,5 @@ migrations/versions/*
 combined.txt
 #app/static/images/
 app/static/blog/images/
+
+zzz*
