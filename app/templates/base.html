@@ -21,170 +21,205 @@
     <link rel="stylesheet" href="{{ url_for('static', filename='css/main.css') }}">
     <link rel="icon" href="{{ url_for('static', filename='favicon.ico') }}" type="image/x-icon">
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
     <style>
-        /* Base Styles for Services*/
-        #services {
-            font-family: 'Inter', sans-serif;
-            color: #f8f9fa;
-            overflow: hidden;
-        }
-        
-        /* Service Card Styles */
-        .service-card {
-            height: 100%;
-            transition: transform 0.3s ease, box-shadow 0.3s ease;
-            overflow: hidden;
-            position: relative;
-            z-index: 1;
-        }
-        
-        .service-card:hover {
-            transform: translateY(-10px);
-            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.2);
-        }
-        
-        .service-card::before {
-            content: '';
-            position: absolute;
-            bottom: 0;
-            left: 0;
-            width: 100%;
-            height: 4px;
-            background: linear-gradient(90deg, #3b82f6, #60a5fa);
-            transform: scaleX(0);
-            transform-origin: 0 50%;
-            transition: transform 0.4s ease;
-            z-index: 1;
-        }
-        
-        .service-card:hover::before {
-            transform: scaleX(1);
-        }
-        
-        .icon-container {
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            width: 80px;
-            height: 80px;
-            margin-bottom: 1.5rem;
-            border-radius: 20px;
-            background: rgba(59, 130, 246, 0.1);
-            transition: all 0.3s ease;
-        }
-        
-        .service-card:hover .icon-container {
-            background: rgba(59, 130, 246, 0.2);
-            transform: scale(1.1);
-        }
-        
-        .service-title {
-            position: relative;
-            display: inline-block;
-        }
-        
-        .service-title::after {
-            content: '';
-            position: absolute;
-            width: 40%;
-            height: 2px;
-            bottom: -8px;
-            left: 0;
-            background-color: #3b82f6;
-            transition: width 0.3s ease;
-        }
-        
-        .service-card:hover .service-title::after {
-            width: 70%;
-        }
-        
-        .feature-list {
-            margin-top: 1.5rem;
-            padding-left: 0;
-        }
-        
-        .feature-item {
-            margin-bottom: 0.75rem;
-            display: flex;
-            align-items: flex-start;
-        }
-        
-        .feature-item svg {
-            flex-shrink: 0;
-            margin-right: 10px;
-            margin-top: 3px;
-        }
-        
-        .learn-more {
-            position: relative;
-            display: inline-flex;
-            align-items: center;
-            font-weight: 500;
-            color: #60a5fa;
-            transition: all 0.3s ease;
-            overflow: hidden;
-        }
-        
-        .learn-more svg {
-            margin-left: 4px;
-            transition: transform 0.3s ease;
-        }
-        
-        .service-card:hover .learn-more svg {
-            transform: translateX(4px);
-        }
-        
-        /* Section heading styles */
-        .section-heading {
-            position: relative;
-            display: inline-block;
-            /* Remove any margin that might affect centering */
-            margin-left: auto;
-            margin-right: auto;
-        }
+    /* Navbar Enhancements */
+    .navbar {
+        background-color: rgba(31, 41, 55, 0.6);
+        backdrop-filter: blur(10px);
+        -webkit-backdrop-filter: blur(10px);
+        position: sticky;
+        top: 0;
+        z-index: 50;
+        transition: background-color 0.3s ease, box-shadow 0.3s ease;
+    }
 
-        .section-heading::after {
-            content: '';
-            position: absolute;
-            width: 60px;
-            height: 3px;
-            bottom: -12px;
-            left: 50%;
-            transform: translateX(-50%);
-            background: linear-gradient(90deg, #3b82f6, #60a5fa);
-        }
+    /* Animated Gradient Border */
+    .nav-item {
+        position: relative;
+        transition: all 0.3s ease;
+    }
 
-        .section-subheading {
-            max-width: 600px;
-            margin: 2rem auto 3rem;
+    .nav-item::after {
+        content: '';
+        position: absolute;
+        bottom: -4px;
+        left: 0;
+        width: 0;
+        height: 2px;
+        background: linear-gradient(90deg, #B91C1C, #D97706);
+        transition: width 0.3s ease;
+    }
+
+    .nav-item:hover::after {
+        width: 100%;
+    }
+
+    /* Hover Depth Effect */
+    .nav-item:hover {
+        transform: translateY(-2px);
+        box-shadow: 0 4px 6px rgba(185, 28, 28, 0.1);
+    }
+
+    /* Particle Background */
+    #particle-container {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        z-index: -1;
+        pointer-events: none;
+    }
+
+    .particle {
+        position: absolute;
+        background-color: rgba(185, 28, 28, 0.1);
+        border-radius: 50%;
+    }
+
+    /* Nav Highlight */
+    .nav-highlight {
+        position: absolute;
+        bottom: 0;
+        height: 2px;
+        background: linear-gradient(90deg, #B91C1C, #D97706);
+        transition: all 0.3s ease;
+        z-index: 10;
+    }
+
+    .navbar.scrolled {
+        box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        background-color: rgba(31, 41, 55, 0.8);
+    }
+
+    /* Modal styles */
+    .service-details-modal {
+        display: none;
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background-color: rgba(0, 0, 0, 0.75);
+        z-index: 100;
+        opacity: 0;
+        transition: opacity 0.3s ease;
+        overflow-y: auto;
+        padding: 2rem 1rem;
+        justify-content: center;
+        align-items: flex-start;
+    }
+
+    .service-details-modal.active {
+        display: flex;
+        opacity: 1;
+    }
+
+    .modal-content {
+        background-color: #1f2937; /* Gray-800 */
+        border: 1px solid #374151; /* Gray-700 */
+        border-radius: 1rem;
+        max-width: 600px;
+        width: 90%;
+        padding: 2rem;
+        position: relative;
+        box-shadow: 0 10px 25px rgba(0, 0, 0, 0.5);
+        transform: translateY(-20px);
+        transition: transform 0.3s ease;
+        margin: 2rem auto;
+    }
+
+    .service-details-modal.active .modal-content {
+        transform: translateY(0);
+    }
+
+    .modal-close {
+        position: absolute;
+        top: 1rem;
+        right: 1rem;
+        background: transparent;
+        border: none;
+        color: #9ca3af; /* Gray-400 */
+        font-size: 1.75rem;
+        cursor: pointer;
+        transition: color 0.2s ease;
+        width: 32px;
+        height: 32px;
+        border-radius: 50%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+
+    .modal-close:hover {
+        color: #f9fafb; /* Gray-50 */
+        background-color: rgba(255, 255, 255, 0.1);
+    }
+
+    /* Service detail item styling */
+    .modal-service-item {
+        background-color: rgba(17, 24, 39, 0.6); /* Gray-900 at 60% opacity */
+        border: 1px solid rgba(55, 65, 81, 0.5); /* Gray-700 at 50% opacity */
+        padding: 1.25rem;
+        border-radius: 0.5rem;
+        margin-bottom: 1rem;
+        transition: transform 0.2s ease, box-shadow 0.2s ease;
+    }
+
+    .modal-service-item:hover {
+        transform: translateY(-2px);
+        box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
+    }
+
+    .modal-buttons {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 1rem;
+        margin-top: 1.5rem;
+    }
+
+    @media (max-width: 640px) {
+        .modal-buttons {
+            flex-direction: column;
         }
-    </style>
+        
+        .modal-content {
+            padding: 1.5rem;
+        }
+    }
+        
+</style>
 </head>
 
 <body class="bg-black text-gray-300 min-h-screen flex flex-col font-sans antialiased">
+    <!-- Particle Background Container -->
+    <div id="particle-container"></div>
+
     <!-- Flash Messages Container -->
     <div id="flash-messages" class="fixed top-5 right-5 z-50 space-y-4"></div>
 
     <!-- Header with Navigation -->
-    <header class="bg-gray-900 border-b border-gray-800 sticky top-0 z-50">
-        <div class="container mx-auto px-4 py-4 flex justify-between items-center">
+    <header class="navbar bg-gray-900 border-b border-gray-800 sticky top-0 z-50">
+        <div class="container mx-auto px-4 py-4 flex justify-between items-center relative">
             <a href="{{ url_for('main.index') }}" class="hover:opacity-80 transition-opacity duration-300">
                 <img src="{{ url_for('static', filename='logo.png') }}" alt="Spark4" class="h-12">
             </a>
+            
             <!-- Desktop Navigation -->
-            <nav class="hidden md:flex items-center space-x-8">
+            <nav class="hidden md:flex items-center space-x-8 relative">
+                <div class="nav-highlight absolute bottom-0 h-1 bg-gradient-to-r from-red-700 to-amber-500 transition-all duration-300"></div>
+                
                 <a href="{{ url_for('main.index') }}#services" 
-                   class="text-gray-300 hover:text-blue-400 transition-colors duration-200">Services</a>
+                   class="nav-item text-gray-400 hover:text-blue-400 transition-colors duration-200">Services</a>
+                <a href="{{ url_for('main.index') }}#projects" 
+                   class="nav-item text-gray-400 hover:text-blue-400 transition-colors duration-200">Projects</a>
                 <a href="{{ url_for('main.index') }}#process" 
-                   class="text-gray-300 hover:text-blue-400 transition-colors duration-200">Process</a>
+                   class="nav-item text-gray-400 hover:text-blue-400 transition-colors duration-200">Process</a>
                 <a href="{{ url_for('main.index') }}#why-us" 
-                   class="text-gray-300 hover:text-blue-400 transition-colors duration-200">Why Us</a>
-                <!-- <a href="{{ url_for('blog.index') }}" 
-                   class="text-gray-300 hover:text-blue-400 transition-colors duration-200">Insights</a> -->
+                   class="nav-item text-gray-400 hover:text-blue-400 transition-colors duration-200">Why Us</a>
                 <a href="{{ url_for('main.index') }}#contact" 
-                   class="bg-gradient-to-r from-blue-500 to-purple-500 text-white px-4 py-2 rounded-lg hover:from-blue-600 hover:to-purple-600 transition duration-200">
+                   class="inline-block bg-gradient-to-r from-blue-600 via-blue-500 to-blue-600 text-white px-6 py-3 rounded-full font-semibold shadow-lg hover:from-blue-700 hover:via-blue-600 hover:to-blue-700 transition-all duration-300 transform hover:-translate-y-1 hover:shadow-xl">
                     Contact Us
                 </a>
             </nav>
@@ -199,20 +234,20 @@
 
         <!-- Mobile Menu -->
         <div id="mobile-menu" class="hidden md:hidden bg-gray-900 border-t border-gray-800">
-            <nav class="container mx-auto px-4 py-4 space-y-4">
+            <nav class="flex flex-col items-center space-y-4 py-4">
                 <a href="{{ url_for('main.index') }}#services" 
-                   class="block text-gray-300 hover:text-blue-400 py-2">Services</a>
+                   class="nav-item text-gray-300 hover:text-blue-400 transition-colors duration-200">Services</a>
+                <a href="{{ url_for('main.index') }}#projects" 
+                   class="nav-item text-gray-300 hover:text-blue-400 transition-colors duration-200">Projects</a>
                 <a href="{{ url_for('main.index') }}#process" 
-                   class="block text-gray-300 hover:text-blue-400 py-2">Process</a>
+                   class="nav-item text-gray-300 hover:text-blue-400 transition-colors duration-200">Process</a>
                 <a href="{{ url_for('main.index') }}#why-us" 
-                   class="block text-gray-300 hover:text-blue-400 py-2">Why Us</a>
-                <!-- <a href="{{ url_for('blog.index') }}" 
-                   class="block text-gray-300 hover:text-blue-400 py-2">Insights</a> -->
-                <a href="{{ url_for('main.index') }}#contact" 
-                   class="block bg-gradient-to-r from-blue-500 to-purple-500 text-white px-4 py-2 rounded-lg text-center">
+                   class="nav-item text-gray-300 hover:text-blue-400 transition-colors duration-200">Why Us</a>
+                   <a href="{{ url_for('main.index') }}#contact" 
+                   class="inline-block bg-gradient-to-r from-red-950 via-red-900 to-red-900 text-white px-6 py-3 rounded-full font-semibold shadow-lg hover:from-red-950 hover:via-red-900 hover:to-red-800 transition-all duration-300 transform hover:-translate-y-1 hover:shadow-xl">
                     Contact Us
                 </a>
-            </nav>
+            </nav>    
         </div>
     </header>
 
@@ -306,43 +341,187 @@
     <!-- Scripts -->
     {% block scripts %}
     <script>
-        // Mobile Menu Toggle
-        const menuToggle = document.getElementById('menu-toggle');
-        const mobileMenu = document.getElementById('mobile-menu');
-        const menuIcon = document.getElementById('menu-icon');
-        let isMenuOpen = false;
+        // Particle Background Animation
+        function createParticles() {
+            const container = document.getElementById('particle-container');
+            const particleCount = 50;
 
-        menuToggle.addEventListener('click', () => {
-            isMenuOpen = !isMenuOpen;
-            mobileMenu.classList.toggle('hidden');
-            menuIcon.setAttribute('d', isMenuOpen 
-                ? 'M6 18L18 6M6 6l12 12' 
-                : 'M4 6h16M4 12h16M4 18h16'
-            );
-        });
-
-        // Initialize flash messages
-        document.addEventListener('DOMContentLoaded', function() {
-            const flashMessagesData = {{ get_flashed_messages(with_categories=true) | tojson | safe }};
-            if (Array.isArray(flashMessagesData)) {
-                flashMessagesData.forEach(([category, message]) => {
-                    showToast(message, category);
+            for (let i = 0; i < particleCount; i++) {
+                const particle = document.createElement('div');
+                particle.classList.add('particle');
+                
+                // Randomize particle properties
+                const size = Math.random() * 5 + 1;
+                particle.style.width = `${size}px`;
+                particle.style.height = `${size}px`;
+                
+                particle.style.left = `${Math.random() * 100}%`;
+                particle.style.top = `${Math.random() * 100}%`;
+                
+                // Animate particles
+                particle.animate([
+                    { transform: 'translate(-50%, -50%) scale(1)', opacity: 0.5 },
+                    { transform: 'translate(-50%, -50%) scale(1.5)', opacity: 0 }
+                ], {
+                    duration: Math.random() * 3000 + 2000,
+                    iterations: Infinity,
+                    delay: Math.random() * 1000,
+                    easing: 'ease-out'
                 });
+
+                container.appendChild(particle);
+            }
+        }
+
+        function handleNavbarScroll() {
+            const navbar = document.querySelector('.navbar');
+            
+            window.addEventListener('scroll', () => {
+                if (window.scrollY > 50) {
+                    navbar.classList.add('scrolled');
+                } else {
+                    navbar.classList.remove('scrolled');
+                }
+            });
+        }
+
+        // Navigation Highlight Effect
+        function initNavHighlight() {
+            const navItems = document.querySelectorAll('.nav-item');
+            const navHighlight = document.querySelector('.nav-highlight');
+            const navContainer = document.querySelector('nav');
+
+            navItems.forEach(item => {
+                item.addEventListener('mouseenter', () => {
+                    const rect = item.getBoundingClientRect();
+                    const containerRect = navContainer.getBoundingClientRect();
+                    
+                    navHighlight.style.width = `${rect.width}px`;
+                    navHighlight.style.transform = `translateX(${rect.left - containerRect.left}px)`;
+                });
+            });
+
+            // Reset highlight when mouse leaves nav
+            navContainer.addEventListener('mouseleave', () => {
+                navHighlight.style.width = '0';
+            });
+        }
+
+        // Mobile Menu Toggle
+        function initMobileMenu() {
+            const menuToggle = document.getElementById('menu-toggle');
+            const mobileMenu = document.getElementById('mobile-menu');
+            const menuIcon = document.getElementById('menu-icon');
+            let isMenuOpen = false;
+
+            menuToggle.addEventListener('click', () => {
+                isMenuOpen = !isMenuOpen;
+                mobileMenu.classList.toggle('hidden');
+                menuIcon.setAttribute('d', isMenuOpen 
+                    ? 'M6 18L18 6M6 6l12 12' 
+                    : 'M4 6h16M4 12h16M4 18h16'
+                );
+            });
+        }
+
+        document.addEventListener('DOMContentLoaded', function() {
+        // Modal open function
+        window.openModal = function() {
+            const modal = document.getElementById('service-details-modal');
+            modal.classList.add('active');
+            document.body.style.overflow = 'hidden'; // Prevent scrolling
+        };
+        
+        // Modal close function
+        window.closeModal = function() {
+            const modal = document.getElementById('service-details-modal');
+            modal.classList.remove('active');
+            document.body.style.overflow = ''; // Re-enable scrolling
+            
+            // Clear the modal content when closing (optional)
+            document.getElementById('modal-service-content').innerHTML = '';
+            
+            // If there's an active HTMX request, abort it
+            htmx.trigger('#modal-service-content', 'htmx:abort');
+        };
+        
+        // Open modal when "Learn More" buttons are clicked
+        document.querySelectorAll('.toggle-details').forEach(button => {
+            button.addEventListener('click', function() {
+                openModal();
+            });
+        });
+        
+        // Close modal with the X button
+        const modalCloseButton = document.getElementById('modal-close');
+        if (modalCloseButton) {
+            modalCloseButton.addEventListener('click', function(e) {
+                e.preventDefault();
+                closeModal();
+            });
+        }
+        
+        // Close modal when clicking outside the content area
+        const modalElement = document.getElementById('service-details-modal');
+        if (modalElement) {
+            modalElement.addEventListener('click', function(e) {
+                if (e.target === this) {
+                    closeModal();
+                }
+            });
+        }
+        
+        // Close modal with Escape key
+        document.addEventListener('keydown', function(e) {
+            if (e.key === 'Escape' && document.getElementById('service-details-modal').classList.contains('active')) {
+                closeModal();
             }
         });
+        
+        // Handle "Get Started" button inside modal
+        document.addEventListener('click', function(e) {
+            // Using event delegation to catch clicks on elements that may not exist yet
+            if (e.target.closest('[data-action="get-started"]')) {
+                e.preventDefault();
+                closeModal();
+                
+                // Scroll to contact section
+                const contactSection = document.getElementById('contact');
+                if (contactSection) {
+                    contactSection.scrollIntoView({ behavior: 'smooth' });
+                }
+            }
+        });
+        
+        // Setup HTMX response handling for modals
+        document.body.addEventListener('htmx:afterSwap', function(evt) {
+            if (evt.detail.target.id === 'modal-service-content') {
+                // Ensure modal is visible after content loads
+                openModal();
+            }
+        });
+    });
+
+        createParticles();
+        handleNavbarScroll();
+        initNavHighlight();
+        initMobileMenu();
+        
     </script>
     {% endblock %}
+
     <script src="{{ url_for('static', filename='js/main.js') }}"></script>
-    <!-- Spinner Overlay -->
+    
+    <!-- Spinner Overlay and other existing scripts -->
     <div id="spinnerOverlay" class="fixed inset-0 backdrop-blur-sm bg-black/30 z-50 hidden flex items-center justify-center">
         <div class="flex flex-col items-center">
-            <!-- Spinner Ring -->
             <div class="relative">
-                <div class="w-12 h-12 rounded-full border-4 border-blue-200 border-t-blue-500 animate-spin"></div>
+                <div class="w-12 h-12 rounded-full border-4 border-red-200 border-t-red-700 animate-spin"></div>
             </div>
             <p class="mt-4 text-white text-lg">Processing...</p>
         </div>
     </div>
+    
     <script src="https://unpkg.com/htmx.org@1.9.6" defer></script>
     <script src="{{ url_for('static', filename='js/main.js') }}" defer></script>
 </body>

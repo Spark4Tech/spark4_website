@@ -23,10 +23,80 @@ def index():
     form = ContactForm()
     return render_template('index.html', form=form)
 
-@main.route('/teach')
-def teach():
-    form = ContactForm()
-    return render_template('teach.html', form=form)
+@main.route('/service-details/<service_id>')
+def service_details(service_id):
+    """
+    Returns HTML content for service details via HTMX request
+    """
+    services = {
+        'digital-presence': {
+            'title': 'Digital Presence Services',
+            'description': 'We help you build a compelling online presence that attracts and engages your target audience.',
+            'services': [
+                {
+                    'name': 'Website Development',
+                    'description': 'Custom-designed, responsive websites optimized for performance and conversion.'
+                },
+                {
+                    'name': 'SEO Optimization',
+                    'description': 'Strategic optimization to improve your visibility in search engines and drive organic traffic.'
+                },
+                {
+                    'name': 'Content Strategy',
+                    'description': 'Tailored content planning that resonates with your audience and supports your business goals.'
+                }
+            ]
+        },
+        'custom-applications': {
+            'title': 'Custom Application Services',
+            'description': 'We build tailored software solutions that address your unique business challenges.',
+            'services': [
+                {
+                    'name': 'Web Applications',
+                    'description': 'Full-stack web applications with intuitive interfaces and robust backend systems.'
+                },
+                {
+                    'name': 'API Development',
+                    'description': 'Custom APIs that connect your systems and enable seamless data exchange.'
+                },
+                {
+                    'name': 'AI Integration',
+                    'description': 'Implementing artificial intelligence capabilities to enhance your applications and automate processes.'
+                }
+            ]
+        },
+        'business-operations': {
+            'title': 'Business Operations Services',
+            'description': 'We optimize your workflows and systems to improve efficiency and drive growth.',
+            'services': [
+                {
+                    'name': 'Process Automation',
+                    'description': 'Streamline repetitive tasks and workflows to reduce manual effort and minimize errors.'
+                },
+                {
+                    'name': 'Data Analytics',
+                    'description': 'Transform your data into actionable insights with dashboards and reporting tools.'
+                },
+                {
+                    'name': 'Digital Transformation Strategy',
+                    'description': 'Comprehensive roadmaps for leveraging technology to achieve your business objectives.'
+                }
+            ]
+        }
+    }
+    
+    # Get service details or return error if service_id is invalid
+    service = services.get(service_id)
+    if not service:
+        return "Service not found", 404
+    
+    # Render template with service details
+    return render_template('partials/service_details.html', service=service)
+
+@main.route('/empty')
+def empty():
+    """Return an empty response for closing content"""
+    return ""
 
 @main.route('/contact', methods=['GET', 'POST'])
 def contact():

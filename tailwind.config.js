@@ -27,5 +27,36 @@ module.exports = {
   },
   plugins: [
     require('@tailwindcss/typography'),
+    // Add a plugin to inject the custom styles for HTMX service details
+    function({ addComponents }) {
+      const components = {
+        '.service-card': {
+          height: '450px',
+          position: 'relative',
+        },
+        '.service-details': {
+          position: 'absolute',
+          left: '0',
+          right: '0',
+          top: '100%',
+          marginTop: '0',
+          backgroundColor: 'rgb(31 41 55)',
+          borderRadius: '0 0 0.75rem 0.75rem',
+          zIndex: '10',
+          borderTop: '1px solid rgb(55 65 81)',
+          boxShadow: '0 10px 15px -3px rgba(0, 0, 0, 0.1)',
+          opacity: '0',
+          maxHeight: '0',
+          overflow: 'hidden',
+          transition: 'opacity 0.3s ease, max-height 0.5s ease',
+          '&:not(.hidden)': {
+            opacity: '1',
+            maxHeight: '1000px',
+          },
+        },
+        // other custom components...
+      }
+      addComponents(components)
+    }
   ],
 }
