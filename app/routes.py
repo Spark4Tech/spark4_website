@@ -28,6 +28,7 @@ def service_details(service_id):
     """
     Returns HTML content for service details via HTMX request
     """
+    # TODO: Replace with actual service data retrieval logic
     services = {
         'digital-presence': {
             'title': 'Digital Presence Services',
@@ -35,15 +36,15 @@ def service_details(service_id):
             'services': [
                 {
                     'name': 'Website Development',
-                    'description': 'Custom-designed, responsive websites optimized for performance and conversion.'
+                    'description': 'Custom-designed, responsive websites optimized for performance, payments and conversion.'
                 },
                 {
                     'name': 'SEO Optimization',
-                    'description': 'Strategic optimization to improve your visibility in search engines and drive organic traffic.'
+                    'description': 'Best practice optimizations to improve your visibility in search engines and drive organic traffic.'
                 },
                 {
                     'name': 'Content Strategy',
-                    'description': 'Tailored content planning that resonates with your audience and supports your business goals.'
+                    'description': 'Tailored content planning and distribution methods that resonates with your audience and supports your business goals.'
                 }
             ]
         },
@@ -53,7 +54,7 @@ def service_details(service_id):
             'services': [
                 {
                     'name': 'Web Applications',
-                    'description': 'Full-stack web applications with intuitive interfaces and robust backend systems.'
+                    'description': 'Secure full-stack web applications with intuitive interfaces and integrations.'
                 },
                 {
                     'name': 'API Development',
