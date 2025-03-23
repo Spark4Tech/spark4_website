@@ -3,20 +3,22 @@ from gitignore_parser import parse_gitignore
 
 # Define the files to be concatenated
 files_to_concatenate = [
-#    'run.py',
+    'run.py',
 #    'config.py',
     
-#    'app/__init__.py',
+    'app/__init__.py',
 #    'app/models.py',
     'app/routes.py',
 
 #    'app/static/js/main.js',
 #    'app/static/css/main.css',
 
-    'app/templates/index.html',
+#    'app/templates/index.html',
     'app/templates/base.html',
+    'app/templates/stash_it.html',
+    'app/templates/stash_it_privacy_policy.html',
 
-    'app/templates/partials/service_details.html',
+#    'app/templates/partials/service_details.html',
     
 #    'app/email/email_service.py',
     
@@ -32,7 +34,9 @@ files_to_concatenate = [
 #    'app/blog/posts/footer.md',
     
 #    'package.json',
-#    'import_posts.py'
+#    'import_posts.py',
+    'zzz_nginx.md',
+    'zzz_systemd.md'
 ]
 
 # Define the output file
