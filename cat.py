@@ -4,7 +4,7 @@ from gitignore_parser import parse_gitignore
 # Define the files to be concatenated
 files_to_concatenate = [
     'run.py',
-#    'config.py',
+    'config.py',
     
     'app/__init__.py',
 #    'app/models.py',
