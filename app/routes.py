@@ -167,6 +167,6 @@ def terms_of_service():
 def stash_it():
     return render_template('stash_it.html')
 
-@main.route('/stash-it-privacy-policy')
+@main.route('/si-privacy-policy')
 def stash_it_privacy_policy():
     return render_template('stash_it_privacy_policy.html')
