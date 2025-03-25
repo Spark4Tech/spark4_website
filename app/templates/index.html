@@ -109,7 +109,7 @@
                 </div>
             </div>
             <h3 class="text-2xl font-semibold mb-4 text-blue-400 text-center group-hover:text-blue-300 transition-colors">Custom Applications</h3>
-            <p class="text-gray-300 mb-6">Develop tailored applications that solve unique business and unlock opportunities for your team and for your customers.</p>
+            <p class="text-gray-300 mb-6">Develop tailored applications that solve unique business challenges and unlock opportunities for your team and for your customers.</p>
             
             <div class="mt-auto text-center">
                 <button 
@@ -269,26 +269,25 @@
         <div class="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-4xl mx-auto">
             <!-- Reason 1 -->
             <div class="bg-gray-800 p-8 rounded-xl border border-gray-700 hover:border-blue-500 transition-all duration-300">
-                <h3 class="text-xl font-semibold mb-4 text-blue-400">Cutting-Edge Technology Stack</h3>
-                <p class="text-gray-300">We leverage the latest tools and frameworks, ensuring your solutions are built on solid technologies that work and are cost efficient.</p>
+                <h3 class="text-xl font-semibold mb-4 text-blue-400">We get to know your business</h3>
+                <p class="text-gray-300">We learn about you and your business so we can align with your long-term business objectives and understand what really matters.</p>
             </div>
-
             <!-- Reason 2 -->
             <div class="bg-gray-800 p-8 rounded-xl border border-gray-700 hover:border-blue-500 transition-all duration-300">
-                <h3 class="text-xl font-semibold mb-4 text-blue-400">Rapid Deployment & Iteration</h3>
-                <p class="text-gray-300">We use agile processes to make implementation fast, reducing time-to-market and learning from the data.</p>
+                <h3 class="text-xl font-semibold mb-4 text-blue-400">We move fast</h3>
+                <p class="text-gray-300">We use agile processes to move quickly, reducing time-to-market and improving data collection.</p>
             </div>
             
             <!-- Reason 3 -->
             <div class="bg-gray-800 p-8 rounded-xl border border-gray-700 hover:border-blue-500 transition-all duration-300">
-                <h3 class="text-xl font-semibold mb-4 text-blue-400">Flexible Technology Partnership</h3>
-                <p class="text-gray-300">We don't just deliver solutions; we can become an extension of your team, at a cost manageable for a small business.</p>
+                <h3 class="text-xl font-semibold mb-4 text-blue-400">We tailor for every client</h3>
+                <p class="text-gray-300">Every business is unique, and one-size-fits-all approaches do not work when it comes to your brand and online presence. We design a unique solution just for you.</p>
             </div>
             
             <!-- Reason 4 -->
             <div class="bg-gray-800 p-8 rounded-xl border border-gray-700 hover:border-blue-500 transition-all duration-300">
-                <h3 class="text-xl font-semibold mb-4 text-blue-400">Comprehensive Digital Strategy</h3>
-                <p class="text-gray-300">Beyond implementation, we provide strategic guidance to ensure your technology investments align with your long-term business objectives.</p>
+                <h3 class="text-xl font-semibold mb-4 text-blue-400">Cutting-Edge Technology Stack</h3>
+                <p class="text-gray-300">We leverage the latest tools and frameworks, ensuring your solutions are built on solid technologies that work, are fast, and are cost efficient.</p>
             </div>
         </div>
     </div>
@@ -297,62 +296,65 @@
 <!-- Who We Work With Section -->
 <section id="partners" class="py-16 bg-gray-800">
     <div class="container mx-auto px-4">
-        <h2 class="text-3xl font-bold mt-16 mb-12 text-center text-white">Our Solution Partners</h2>
-        <div class="flex justify-center items-center space-x-8 md:space-x-16">
+        <h2 class="text-3xl font-bold mt-8 mb-12 text-center text-white">Our Solution Partners</h2>
+        
+        <!-- Flex layout with wrapping for mobile -->
+        <div class="flex flex-wrap justify-center items-center gap-8 md:gap-10 lg:gap-12">
             <a href="https://www.digitalocean.com" 
                target="_blank" 
                rel="noopener noreferrer"
                class="block transform hover:scale-110 transition-transform duration-300">
                 <img src="{{ url_for('static', filename='images/logos/do.png') }}" 
-                     alt="DigitalOcean: Cloud Infrastructure Partner for Spark4's Scalable Hosting Solutions" 
-                     class="h-16 md:h-24 grayscale hover:grayscale-0 opacity-70 hover:opacity-100 transition-all duration-300">
-            </a>        
+                     alt="DigitalOcean: Cloud Infrastructure Partner" 
+                     class="h-12 md:h-16 grayscale hover:grayscale-0 opacity-70 hover:opacity-100 transition-all duration-300">
+            </a>
+            
             <a href="https://cloud.google.com" 
-           target="_blank" 
-           rel="noopener noreferrer"
-           class="block transform hover:scale-110 transition-transform duration-300">
-            <img src="{{ url_for('static', filename='images/logos/google.png') }}" 
-                 alt="Google Cloud: Cutting-Edge Cloud Computing and AI Technologies for Spark4's Innovative Solutions" 
-                 class="h-16 md:h-24 grayscale hover:grayscale-0 opacity-70 hover:opacity-100 transition-all duration-300">
-        </a>
-        
-        <a href="https://www.anthropic.com" 
-           target="_blank" 
-           rel="noopener noreferrer"
-           class="block transform hover:scale-110 transition-transform duration-300">
-            <img src="{{ url_for('static', filename='images/logos/anthropic.png') }}" 
-                 alt="Anthropic: Advanced AI Research and Ethical AI Solutions Powering Spark4's Intelligent Applications" 
-                 class="h-16 md:h-24 grayscale hover:grayscale-0 opacity-70 hover:opacity-100 transition-all duration-300">
-        </a>
-        
-        <a href="https://aws.amazon.com" 
-           target="_blank" 
-           rel="noopener noreferrer"
-           class="block transform hover:scale-110 transition-transform duration-300">
-            <img src="{{ url_for('static', filename='images/logos/aws.png') }}" 
-                 alt="Amazon Web Services: Cloud Computing and Infrastructure Services for Spark4's Enterprise Solutions" 
-                 class="h-16 md:h-24 grayscale hover:grayscale-0 opacity-70 hover:opacity-100 transition-all duration-300">
-        </a>
-        
-        <a href="https://www.openai.com" 
-           target="_blank" 
-           rel="noopener noreferrer"
-           class="block transform hover:scale-110 transition-transform duration-300">
-            <img src="{{ url_for('static', filename='images/logos/openai.png') }}" 
-                 alt="OpenAI: Pioneering Artificial Intelligence Technologies Enabling Spark4's Innovative Digital Solutions" 
-                 class="h-16 md:h-24 grayscale hover:grayscale-0 opacity-70 hover:opacity-100 transition-all duration-300">
-        </a>
-        
-        <a href="https://huggingface.co" 
-           target="_blank" 
-           rel="noopener noreferrer"
-           class="block transform hover:scale-110 transition-transform duration-300">
-            <img src="{{ url_for('static', filename='images/logos/huggingface.png') }}" 
-                 alt="Hugging Face: Machine Learning and Natural Language Processing Technologies Supporting Spark4's AI Innovations" 
-                 class="h-16 md:h-24 grayscale hover:grayscale-0 opacity-70 hover:opacity-100 transition-all duration-300">
-        </a>
+               target="_blank" 
+               rel="noopener noreferrer"
+               class="block transform hover:scale-110 transition-transform duration-300">
+                <img src="{{ url_for('static', filename='images/logos/google.png') }}" 
+                     alt="Google Cloud: Cloud Computing and AI Technologies" 
+                     class="h-12 md:h-16 grayscale hover:grayscale-0 opacity-70 hover:opacity-100 transition-all duration-300">
+            </a>
+            
+            <a href="https://www.anthropic.com" 
+               target="_blank" 
+               rel="noopener noreferrer"
+               class="block transform hover:scale-110 transition-transform duration-300">
+                <img src="{{ url_for('static', filename='images/logos/anthropic.png') }}" 
+                     alt="Anthropic: Advanced AI Research" 
+                     class="h-12 md:h-16 grayscale hover:grayscale-0 opacity-70 hover:opacity-100 transition-all duration-300">
+            </a>
+            
+            <a href="https://aws.amazon.com" 
+               target="_blank" 
+               rel="noopener noreferrer"
+               class="block transform hover:scale-110 transition-transform duration-300">
+                <img src="{{ url_for('static', filename='images/logos/aws.png') }}" 
+                     alt="Amazon Web Services: Cloud Computing" 
+                     class="h-12 md:h-16 grayscale hover:grayscale-0 opacity-70 hover:opacity-100 transition-all duration-300">
+            </a>
+            
+            <a href="https://www.openai.com" 
+               target="_blank" 
+               rel="noopener noreferrer"
+               class="block transform hover:scale-110 transition-transform duration-300">
+                <img src="{{ url_for('static', filename='images/logos/openai.png') }}" 
+                     alt="OpenAI: Pioneering Artificial Intelligence" 
+                     class="h-12 md:h-16 grayscale hover:grayscale-0 opacity-70 hover:opacity-100 transition-all duration-300">
+            </a>
+            
+            <a href="https://huggingface.co" 
+               target="_blank" 
+               rel="noopener noreferrer"
+               class="block transform hover:scale-110 transition-transform duration-300">
+                <img src="{{ url_for('static', filename='images/logos/huggingface.png') }}" 
+                     alt="Hugging Face: Machine Learning and NLP" 
+                     class="h-12 md:h-16 grayscale hover:grayscale-0 opacity-70 hover:opacity-100 transition-all duration-300">
+            </a>
+        </div>
     </div>
-</div>
 </section>
 
 <!-- Apps Section -->

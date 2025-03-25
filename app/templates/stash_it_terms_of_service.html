@@ -1,0 +1,79 @@
+<!-- templates/stash-it-terms_of_service.html -->
+{% extends "base.html" %}
+
+{% block content %}
+<section class="py-20">
+    <div class="container mx-auto px-4">
+        <h1 class="text-4xl font-bold mb-8">Terms of Service</h1>
+
+        <!-- Introduction -->
+        <p class="mb-6">
+            Welcome to Stash-it, by Spark4.tech! By using our app(s), you agree to the following terms and conditions. Please read them carefully before using the Wellness Corner application ("App"), as they affect your legal rights.
+        </p>
+
+        <!-- Section 1: Acceptance of Terms -->
+        <h2 class="text-2xl font-bold mb-4">1. Acceptance of Terms</h2>
+        <p class="mb-6">
+            By downloading, accessing, or using Spark4 Apps, you agree to be bound by these Terms of Service and our <a href="{{ url_for('main.privacy_policy') }}" class="text-blue-500 hover:underline">Privacy Policy</a>. If you do not agree to these terms, you should not use the App.
+        </p>
+
+        <!-- Section 2: App Description and Features -->
+        <h2 class="text-2xl font-bold mb-4">2. App Description and Features</h2>
+        <p class="mb-6">
+            Spark4 apps are mobile applications developed by us. While most apps are currently free to use, we may introduce paid features or premium subscriptions in the future. You will be notified in advance of any pricing changes or paid features, and your use of those features will be subject to additional terms.
+        </p>
+
+        <!-- Section 3: User Responsibilities and Health Requirements -->
+        <h2 class="text-2xl font-bold mb-4">3. User Responsibilities and Health Requirements</h2>
+        <p class="mb-6">
+            As a user, you agree to use the Apps only for lawful purposes and in accordance with these Terms of Service. You are responsible for maintaining the confidentiality of your account credentials and for any activities or actions that occur under your account.
+        </p>
+
+        <!-- Section 4: Modifications to the App -->
+        <h2 class="text-2xl font-bold mb-4">4. Modifications to the App</h2>
+        <p class="mb-6">
+            We are constantly updating and improving our Apps. We reserve the right to modify, suspend, or discontinue the App (or any part of it) at any time, with or without notice to you. You agree that we will not be liable to you or any third party for any modification, suspension, or discontinuation of the App.
+        </p>
+
+        <!-- Section 5: Payments and Subscriptions -->
+        <h2 class="text-2xl font-bold mb-4">5. Payments and Subscriptions</h2>
+        <p class="mb-6">
+            If Spark4 introduces paid features or subscriptions, you will be provided with the option to access premium content or services. Any payments made for such services will be processed through secure third-party payment platforms, and by subscribing, you agree to abide by the pricing, payment, and cancellation terms presented at the time of purchase.
+        </p>
+
+        <!-- Section 6: Termination of Use -->
+        <h2 class="text-2xl font-bold mb-4">6. Termination of Use</h2>
+        <p class="mb-6">
+            You may stop using the Apps at any time. We reserve the right to suspend or terminate your account if we believe you have violated these Terms of Service or are using the App unlawfully. Upon termination, your right to access and use the App will immediately cease.
+        </p>
+
+        <!-- Section 7: Limitation of Liability and Health Disclaimer -->
+        <h2 class="text-2xl font-bold mb-4">7. Limitation of Liability and Health Disclaimer</h2>
+        <p class="mb-6">
+            To the maximum extent permitted by law, Spark4 and its affiliates, licensors, and partners will not be liable for any indirect, incidental, special, consequential, or punitive damages arising from your use of the App. This includes, but is not limited to, loss of data, loss of profits, or damages for personal injury. You expressly acknowledge that participation in physical activities carries inherent risks and that you assume all responsibility for any injuries, damages, or losses sustained while using our App or following its suggested activities. The App is not a substitute for professional medical advice or treatment.
+        </p>
+
+        <!-- Section 8: Governing Law -->
+        <h2 class="text-2xl font-bold mb-4">8. Governing Law</h2>
+        <p class="mb-6">
+            These Terms of Service are governed by and construed in accordance with the laws of the State of Washington. You agree that any legal action or proceeding arising out of your use of the Apps will be brought in the appropriate courts located in Clark County, Washington.
+        </p>
+
+        <!-- Section 9: Changes to the Terms -->
+        <h2 class="text-2xl font-bold mb-4">9. Changes to the Terms</h2>
+        <p class="mb-6">
+            We may update these Terms of Service from time to time to reflect changes in our services or legal requirements. We will notify you of any material changes, and your continued use of the App after the changes are made constitutes your acceptance of the new terms.
+        </p>
+
+        <!-- Section 10: Contact Us -->
+        <h2 class="text-2xl font-bold mb-4">10. Contact Us</h2>
+        <p class="mb-6">
+            If you have any questions about these Terms of Service, please contact us at <a href="mailto:info@spark4.tech" class="text-blue-500 hover:underline">info@spark4.tech</a>.
+        </p>
+
+        <p class="mt-6">
+            Last updated: March 21, 2025
+        </p>
+    </div>
+</section>
+{% endblock %}

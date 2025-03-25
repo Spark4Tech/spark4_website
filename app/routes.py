@@ -170,3 +170,7 @@ def stash_it():
 @main.route('/si-privacy-policy')
 def stash_it_privacy_policy():
     return render_template('stash_it_privacy_policy.html')
+
+@main.route('/si-terms-of-service')
+def stash_it_terms_of_service():
+    return render_template('stash_it_terms_of_service.html')
