@@ -6,47 +6,70 @@
         <h1 class="text-4xl font-bold mb-8 text-white">Stash It Privacy Policy</h1>
         
         <div class="bg-gray-900 p-8 rounded-xl text-gray-300">
-            <p class="mb-4">Last Updated: March 2025</p>
+            <p class="mb-4">Last Updated: March 26, 2025</p>
             
-            <h2 class="text-2xl font-bold mt-8 mb-4 text-blue-400">1. Our Commitment to Privacy</h2>
-            <p class="mb-4">We are committed to protecting your privacy. Our extension is designed with your data security as a top priority.</p>
-            
-            <h2 class="text-2xl font-bold mt-8 mb-4 text-blue-400">2. No Data Collection</h2>
-            <p class="mb-4">Stash It does not collect, store, or track any of your personal data or browsing information. We respect your privacy completely.</p>
-            
-            <h2 class="text-2xl font-bold mt-8 mb-4 text-blue-400">3. How Stash It Works</h2>
+            <h2 class="text-2xl font-bold mt-8 mb-4 text-blue-400">1. How Stash It Works</h2>
+            <p class="mb-4">Stash It is a browser extension that helps you save web pages as calendar events for future reference. Here's how it operates:</p>
             <ul class="list-disc ml-6 mb-4">
-                <li>The extension only creates calendar events in your Google Calendar</li>
-                <li>We never read, modify, or delete any of your existing documents or calendar events</li>
-                <li>The only information used is what you explicitly provide when creating a calendar event</li>
+                <li>When you click "Stash It", the extension creates a Google Calendar event with your webpage link</li>
+                <li>All processing happens directly in your browser - we have no servers collecting or storing your data</li>
+                <li>The extension only accesses the current tab's URL and title when you explicitly click to create an event</li>
+                <li>Communication occurs directly between your browser and Google Calendar using OAuth2 authentication</li>
+            </ul>
+            
+            <h2 class="text-2xl font-bold mt-8 mb-4 text-blue-400">2. Data Collection and Storage</h2>
+            <p class="mb-4">Stash It is designed with a zero-data-retention policy:</p>
+            <ul class="list-disc ml-6 mb-4">
+                <li>We do not collect, store, or transmit any personal data</li>
+                <li>The only local storage used is for notification management and your default time preference</li>
+                <li>No browsing history or patterns are tracked or stored</li>
+                <li>No analytics or tracking code is included in the extension</li>
+                <li>Calendar events are created directly in your Google Calendar - we don't store copies</li>
+            </ul>
+            
+            <h2 class="text-2xl font-bold mt-8 mb-4 text-blue-400">3. Required Permissions</h2>
+            <p class="mb-4">The extension requires minimal permissions to function:</p>
+            <ul class="list-disc ml-6 mb-4">
+                <li>"identity" - For Google Calendar OAuth2 authentication</li>
+                <li>"tabs" and "activeTab" - To access the current tab's URL and title</li>
+                <li>"storage" - To save your default time preference and manage notifications</li>
+                <li>"notifications" - To show confirmation when events are created</li>
             </ul>
             
             <h2 class="text-2xl font-bold mt-8 mb-4 text-blue-400">4. Google Calendar Integration</h2>
-            <p class="mb-4">Stash It requires Google Calendar access to create events. This access is limited to creating new calendar events</p>
-            
-            <h2 class="text-2xl font-bold mt-8 mb-4 text-blue-400">5. Permissions</h2>
-            <p class="mb-4">The extension requests only the minimum permissions necessary to function:</p>
+            <p class="mb-4">Our Google Calendar integration uses industry-standard security practices:</p>
             <ul class="list-disc ml-6 mb-4">
-                <li>Access to the current browser tab to create an event link</li>
-                <li>Google Calendar API access for event creation</li>
+                <li>OAuth2 authentication with limited calendar event creation scope</li>
+                <li>Direct browser-to-Google API communication - no intermediary servers</li>
+                <li>Access tokens are managed securely by your browser</li>
+                <li>The extension can only create new events, not read or modify existing ones</li>
             </ul>
             
-            <h2 class="text-2xl font-bold mt-8 mb-4 text-blue-400">6. Data Security</h2>
-            <p class="mb-4">While the extension interacts with Google's services, we do not store or retain any of your personal information. All event creation happens directly through Google's secure APIs.</p>
+            <h2 class="text-2xl font-bold mt-8 mb-4 text-blue-400">5. Security Measures</h2>
+            <p class="mb-4">We implement the following security measures:</p>
+            <ul class="list-disc ml-6 mb-4">
+                <li>Client-side only processing - all operations happen in your browser</li>
+                <li>No external data transmission except to Google Calendar API</li>
+                <li>Content Security Policy (CSP) headers to prevent injection attacks</li>
+                <li>Regular security audits and code reviews</li>
+            </ul>
+            
+            <h2 class="text-2xl font-bold mt-8 mb-4 text-blue-400">6. Your Rights</h2>
+            <p class="mb-4">Since we don't collect or store any personal data, there is no user data to access, modify, or delete. You can remove the extension at any time, which will remove any locally stored preferences. Calendar events you've created will remain in your Google Calendar under your control.</p>
             
             <h2 class="text-2xl font-bold mt-8 mb-4 text-blue-400">7. Changes to This Policy</h2>
-            <p class="mb-4">We may update this privacy policy occasionally. We will notify you of any significant changes through the Chrome Web Store listing or via the extension.</p>
+            <p class="mb-4">We may update this privacy policy to reflect changes in our practices or legal requirements. Updates will be published through the Chrome Web Store.</p>
             
             <h2 class="text-2xl font-bold mt-8 mb-4 text-blue-400">8. Contact Us</h2>
-            <p>If you have any questions or concerns about our privacy policy, please contact us at:</p>
+            <p>For privacy-related inquiries, please contact us at:</p>
             <p class="mt-2">
-                <strong>Email:</strong> <a href="mailto:info@spark4.tech" class="text-blue-400 hover:underline">info@spark4.tech</a>
+                <strong>Email:</strong> <a href="mailto:privacy@spark4.tech" class="text-blue-400 hover:underline">privacy@spark4.tech</a>
             </p>
             <p>
                 <strong>Address:</strong> Spark4, 1220 Main Street, Vancouver, WA 98660, USA
             </p>
             <p class="mt-6">
-                Last updated: March 21, 2025
+                Last updated: March 26, 2025
             </p>
         </div>
     </div>
